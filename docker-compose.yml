@@ -1,0 +1,14 @@
+services:
+  [[PROJECT_NAME]]:
+    build: ./
+    image: [[PROJECT_NAME]]
+    restart: unless-stopped
+    ports:
+      - 3002:3002
+    environment:
+      - ENV_PATH=/run/secrets/[[PROJECT_NAME]]-env
+    secrets:
+      - [[PROJECT_NAME]]-env
+secrets:
+  [[PROJECT_NAME]]-env:
+    file: ./.env
